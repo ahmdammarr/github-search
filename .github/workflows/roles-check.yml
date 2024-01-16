@@ -1,4 +1,4 @@
-name: Vercel Deployment
+name: Run Rules Check on PR
 
 on:
   pull_request:
@@ -6,24 +6,30 @@ on:
       - main
 
 jobs:
-  deploy:
+  Rules-check:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup Node.js and Yarn
-        uses: actions/setup-node@v3
-        with:
-          node-version: 14
-      - run: npm install -g yarn@latest
+    - name: Set up Node.js and Yarn
+      uses: actions/setup-node@v3
+      with:
+        node-version: 'current' 
+        registry-url: 'https://registry.yarnpkg.com/'  # Specify Yarn registry
 
-      - name: Install Dependencies
-        run: yarn install
+    - name: Install Yarn
+      run: npm install -g yarn
 
-      - name: Build Next.js App
-        run: yarn build
+    - name: Install dependencies with Yarn
+      run: yarn install
 
-      - name: Deploy to Vercel
-        run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+    - name: Run Lint-check
+      run: yarn lint
+
+    - name: Run Type-check
+      run: yarn typecheck
+
+    - name: Run tests
+      run: yarn test
