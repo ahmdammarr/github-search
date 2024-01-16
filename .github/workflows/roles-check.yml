@@ -1,4 +1,4 @@
-name: Run Roles Check on PR
+name: Run Rules Check on PR
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  rules-check:
     runs-on: ubuntu-latest
 
     steps:
