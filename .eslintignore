@@ -1,5 +1,6 @@
 .husky
 .prettierignore
+stories
 Dockerfile
 yarn.lock
 dist
