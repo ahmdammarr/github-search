@@ -1,4 +1,4 @@
-name: Run Tests on PR
+name: Run Rules Check on PR
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  rules-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +24,12 @@ jobs:
 
     - name: Install dependencies with Yarn
       run: yarn install
+
+    - name: Run Lint-check
+      run: yarn lint
+
+    - name: Run Type-check
+      run: yarn typecheck
 
     - name: Run tests
       run: yarn test
