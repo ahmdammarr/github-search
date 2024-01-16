@@ -25,7 +25,7 @@ jobs:
         run: npm install --global vercel@canary
       
       - name: Vercel Login
-        run: vercel login --token ${{ secrets.VERCEL_TOKEN }}
+        run: vercel login 
 
       - name: Pull environment
         run: vercel pull --yes
