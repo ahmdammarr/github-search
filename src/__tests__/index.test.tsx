@@ -9,7 +9,7 @@ describe("Home", () => {
     render(<Home />);
 
     const paragraph = screen.getByRole("heading", {
-      name: "My App",
+      name: "My App wrong",
     });
     expect(paragraph).toBeTruthy();
   });
