@@ -9,6 +9,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix --ext .ts,.tsx,.js,.jsx",
     "typecheck": "tsc --pretty --skipLibCheck --noEmit",
+    "test": "jest",
     "test:watch": "jest --watch"
   },
   "dependencies": {
