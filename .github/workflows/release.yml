@@ -1,4 +1,4 @@
-name: GitHub Actions Vercel Production Deployment
+name: Vercel Production Deployment
 
 on:
  pull_request:
