@@ -3,12 +3,12 @@ env:
     ORG_ID: ${{ secrets.ORG_ID }}
     PROJECT_ID: ${{ secrets.PROJECT_ID }}
 on:
-    workflow_dispatch:
-        inputs:
-          branch:
-            description: 'Branch'
-            required: true
-            default: 'main'
+  workflow_dispatch:
+    inputs:
+        branch:
+          description: 'Branch'
+          required: true
+          default: 'main'
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
