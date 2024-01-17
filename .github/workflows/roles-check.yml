@@ -10,26 +10,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js and Yarn
-      uses: actions/setup-node@v3
-      with:
-        node-version: 'current' 
-        registry-url: 'https://registry.yarnpkg.com/'  # Specify Yarn registry
+      - name: Set up Node.js and Yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: "current"
+          registry-url: "https://registry.yarnpkg.com/" # Specify Yarn registry
 
-    - name: Install Yarn
-      run: npm install -g yarn
+      - name: Install Yarn
+        run: npm install -g yarn
 
-    - name: Install dependencies with Yarn
-      run: yarn install
+      - name: Install dependencies with Yarn
+        run: yarn install
 
-    - name: Run Lint-check
-      run: yarn lint
+      - name: Run Lint-check
+        run: yarn lint
 
-    - name: Run Type-check
-      run: yarn typecheck
+      - name: Run Type-check
+        run: yarn typecheck
+      #TODO: remove cleanup workout when solving jest and storybook issue
+      - name: Cleanup before test | Remove node modules
+        run: |
+          rm -r node_modules
+      - name: Cleanup before test | Remove yarn.lock
+        run: |
+          rm -r yarn.lock
 
-    - name: Run tests
-      run: yarn test
+      - name: Install dependencies again
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test
