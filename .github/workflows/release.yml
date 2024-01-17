@@ -1,9 +1,9 @@
-name: Vercel Production Deployment
+name: Vercel Release
 env:
     ORG_ID: ${{ secrets.ORG_ID }}
     PROJECT_ID: ${{ secrets.PROJECT_ID }}
 on:
-  push:
+  pull_request:
     branches:
       - main
 jobs:
