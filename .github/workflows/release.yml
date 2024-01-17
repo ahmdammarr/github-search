@@ -1,11 +1,14 @@
-name: Vercel Release
+name: Vercel Release | Manual trigger
 env:
     ORG_ID: ${{ secrets.ORG_ID }}
     PROJECT_ID: ${{ secrets.PROJECT_ID }}
 on:
-  pull_request:
-    branches:
-      - main
+    workflow_dispatch:
+        inputs:
+          branch:
+            description: 'Branch'
+            required: true
+            default: 'main'
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
