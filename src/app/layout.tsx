@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ChakraClientProvider } from "./providers/ChakraClientProvider";
+import { Container } from "@chakra-ui/react";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <ChakraClientProvider>
-        <body className={inter.className}>{children}</body>
-      </ChakraClientProvider>
+      <body>
+        <ChakraClientProvider>
+          <Container height={"100vh"} maxW={"100vh"}>
+            {children}
+          </Container>
+        </ChakraClientProvider>
+      </body>
     </html>
   );
 }
