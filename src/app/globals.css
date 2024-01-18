@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'PT-Sans';
+  src: url('../../public/fonts/pt-sans/pt-sans-regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../public/fonts/cairo/cairo-regular.woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
