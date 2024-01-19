@@ -17,7 +17,9 @@ export default function ResultRows({
     <>
       {repos?.map(({ repo, owner, stars }) => {
         return (
-          <Tr key={repo}>
+          <Tr key={repo} _hover={{
+            opacity: 0.5
+          }}>
             <Td>{owner}</Td>
             <Td>{repo}</Td>
             <Td isNumeric>{stars}</Td>
