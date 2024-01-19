@@ -24,6 +24,13 @@ allow_signup=
 access_token= 
 ```
 
+## Manual deploy
+
+- Go to actions
+- On the left side bar check Vercel Release | manual trigger
+- Click Run workflow dropdown
+- Choose branch
+- Click Run workflow button
 
 
 | Todo by 21st of Jan
