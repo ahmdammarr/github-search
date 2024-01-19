@@ -24,6 +24,7 @@ export default async function Results({ query }: { query: string }) {
               edges {
                 node {
                   ... on Repository {
+                    id
                     name
                     stargazers{
                       totalCount
@@ -42,13 +43,14 @@ export default async function Results({ query }: { query: string }) {
   const edges = result?.data?.search?.edges;
   const rows = edges?.map((node: typeof edges.node) => {
     return {
+      id: node?.node?.id || "",
       repo: node?.node?.name || "",
       stars: node?.node?.stargazers?.totalCount || "",
       owner: node?.node?.owner?.login || "",
     };
   });
   return (
-    <TableContainer w="100%" mt="lg" overflowY={'scroll'}>
+    <TableContainer w="100%" mt="lg" overflowY={"scroll"}>
       <Table variant="simple">
         <Thead>
           <Tr>
