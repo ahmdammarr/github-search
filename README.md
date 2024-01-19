@@ -15,23 +15,19 @@
 - Add the following variables to the `.env` file // To be updated after auth feature
 
 ```sh
-client_id= 
-redirect_uri=
-login=
-scope=
-state=
-allow_signup=
-access_token= 
+graphql_base_url=
+access_token= (To be removed after auth feature)
 ```
 
 
 
 | Todo by 21st of Jan
 | ------
-| Repo details page 
+| Repo details page (Done)
 | Codegen for Graphql 
+| Auth feature
 | Complete test coverage
 | Code docs with JSDocs 
-
+| Document Components with story book
 
 
