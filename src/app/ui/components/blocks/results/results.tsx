@@ -13,7 +13,7 @@ import ResultRows, { RESULT_TABLE_PARAMS } from "./result-rows";
 
 export default async function Results({ query }: { query: string }) {
   const result = await getQuery({
-    url: "https://api.github.com/graphql",
+    url: process.env.graphql_base_url || "",
     query: `
         query SearchQuery($search: String!, $after: String){
             search(query:$search, type: REPOSITORY, first: 100, after: $after) {
