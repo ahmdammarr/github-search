@@ -30,11 +30,11 @@ access_token= (To be removed after auth feature)
 
 | Todo by 21st of Jan
 | ------
-| Repo details page (Done)
-| Codegen for Graphql 
-| Auth feature
-| Complete test coverage
-| Code docs with JSDocs 
-| Document Components with story book
+| [X] Repo details page 
+| [ ] Codegen for Graphql (in progress) 
+| [ ] Auth feature
+| [ ] Complete test coverage
+| [ ] Code docs with JSDocs 
+| [ ] Document Components with story book
 
 
