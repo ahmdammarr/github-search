@@ -1,18 +1,9 @@
 import { getQuery } from "@app/utils/api-config/get-query";
-import {
-  Table,
-  TableContainer,
-  Tbody,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
 import React from "react";
-import ResultRows, { RESULT_TABLE_PARAMS } from "./result-rows";
+import ResultTable, { RESULT_TABLE_PARAMS } from "./result-table";
 
-export default async function Results({ query }: { query: string }) {
-  const result = await getQuery({
+const getData = async (query: string, cursor?: string) => {
+  const queryData = await getQuery({
     url: process.env.graphql_base_url || "",
     query: `
         query SearchQuery($search: String!, $after: String){
@@ -26,7 +17,7 @@ export default async function Results({ query }: { query: string }) {
                   ... on Repository {
                     id
                     name
-                    stargazers{
+                    stargazers {
                       totalCount
                     }
                     owner {
@@ -38,9 +29,22 @@ export default async function Results({ query }: { query: string }) {
             }
           }
         `,
-    variables: { search: query },
+    variables: { search: query, after: cursor },
   });
+
+  return { data: queryData };
+};
+
+export default async function Results({
+  query,
+  cursor,
+}: {
+  query: string;
+  cursor?: string;
+}) {
+  const result = (await getData(query, cursor)).data;
   const edges = result?.data?.search?.edges;
+  const newCursor = result?.data?.search?.pageInfo?.endCursor;
   const rows = edges?.map((node: typeof edges.node) => {
     return {
       id: node?.node?.id || "",
@@ -50,28 +54,9 @@ export default async function Results({ query }: { query: string }) {
     };
   });
   return (
-    <TableContainer w="100%" mt="lg" overflowY={"scroll"}>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th>Owner</Th>
-            <Th>Repo</Th>
-            <Th isNumeric>Stars</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          <ResultRows repos={rows as RESULT_TABLE_PARAMS[]} />
-        </Tbody>
-        <Tfoot>
-          {/* 
-          TODO: To be implemented with pagination
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr> */}
-        </Tfoot>
-      </Table>
-    </TableContainer>
+    <ResultTable
+      repos={rows as RESULT_TABLE_PARAMS[]}
+      cursor={newCursor}
+    />
   );
 }

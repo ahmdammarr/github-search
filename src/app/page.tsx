@@ -10,20 +10,29 @@ export default async function Page({
 }: {
   searchParams?: {
     query?: string;
+    cursor?:string
     page?: string;
   };
 }) {
   const query = searchParams?.query || "";
+  const cursor = searchParams?.cursor
   const currentPage = Number(searchParams?.page) || 1;
-
   return (
-    <Flex w="100%" h="100%" alignItems={"center"} flexDir={"column"} overflowY={'scroll'}>
+    <Flex
+      w="100%"
+      h="100%"
+      alignItems={"center"}
+      flexDir={"column"}
+      overflowY={"scroll"}
+    >
       <Search />
-     {query? <Suspense key={query + currentPage} fallback={<AppSkeleton />}>
-        <Results query={query} />
-      </Suspense>:
-      <EmptySearch/>
-    }
+      {query ? (
+        <Suspense key={query + currentPage} fallback={<AppSkeleton />}>
+          <Results query={query} cursor={cursor}/>
+        </Suspense>
+      ) : (
+        <EmptySearch />
+      )}
     </Flex>
   );
 }
