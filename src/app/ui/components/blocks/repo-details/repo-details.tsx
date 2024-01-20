@@ -13,7 +13,7 @@ export default async function RepoDetails({
   name?: string;
 }) {
   const result = await getQuery({
-    url: process.env.base_url || "",
+    url: process.env.graphql_base_url || "",
     query: `
     query SearchRepoById($owner: String!, $name: String!) {
         repository(owner: $owner, name: $name) {

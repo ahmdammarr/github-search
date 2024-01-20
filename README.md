@@ -15,23 +15,26 @@
 - Add the following variables to the `.env` file // To be updated after auth feature
 
 ```sh
-client_id= 
-redirect_uri=
-login=
-scope=
-state=
-allow_signup=
-access_token= 
+graphql_base_url=
+access_token= (To be removed after auth feature)
 ```
 
+## Manual deploy
+
+- Go to actions
+- On the left side bar check Vercel Release | manual trigger
+- Click Run workflow dropdown
+- Choose branch
+- Click Run workflow button
 
 
 | Todo by 21st of Jan
 | ------
-| Repo details page 
-| Codegen for Graphql 
-| Complete test coverage
-| Code docs with JSDocs 
-
+| [X] Repo details page 
+| [ ] Codegen for Graphql (in progress) 
+| [ ] Auth feature
+| [ ] Complete test coverage
+| [ ] Code docs with JSDocs 
+| [ ] Document Components with story book
 
 
