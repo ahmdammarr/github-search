@@ -10,6 +10,7 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import { Maybe } from "graphql/jsutils/Maybe";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
@@ -27,7 +28,7 @@ export default function ResultTable({
   cursor,
 }: {
   repos: RESULT_TABLE_PARAMS[];
-  cursor?: string;
+  cursor?: Maybe<string>;
 }) {
   const { replace } = useRouter();
   const [data, setdata] = useState(repos);
@@ -41,7 +42,7 @@ export default function ResultTable({
   const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  function handlePagination(newCursor?: string) {
+  function handlePagination(newCursor?: Maybe<string>) {
     setisLoading(true);
     const params = new URLSearchParams(searchParams);
     if (newCursor) params.set("cursor", newCursor);

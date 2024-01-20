@@ -6450,7 +6450,7 @@ export type Enterprise = AnnouncementBanner & Node & {
   announcementUserDismissible?: Maybe<Scalars['Boolean']['output']>;
   /** A URL pointing to the enterprise's public avatar. */
   avatarUrl: Scalars['URI']['output'];
-  /** Enterprise billing information visible to enterprise billing managers. */
+  /** Enterprise billing information visible to enterprise billing managers. */
   billingInfo?: Maybe<EnterpriseBillingInfo>;
   /** Identifies the date and time when the object was created. */
   createdAt: Scalars['DateTime']['output'];
@@ -23951,7 +23951,7 @@ export type SearchResultItemConnection = {
    */
   discussionCount: Scalars['Int']['output'];
   /** A list of edges. */
-  edges?: Maybe<Array<Maybe<SearchResultItemEdge>>>;
+  edges?: Maybe<Array<SearchResultItemEdge>>;
   /**
    * The total number of issues that matched the search query. Regardless of the
    * total number of matches, a maximum of 1,000 results will be available across all types.
@@ -23986,7 +23986,7 @@ export type SearchResultItemEdge = {
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
-  node?: Maybe<SearchResultItem>;
+  node?: Maybe<Repository>;
   /** Text matches on the result found. */
   textMatches?: Maybe<Array<Maybe<TextMatch>>>;
 };
