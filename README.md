@@ -41,6 +41,7 @@ GRAPHQL_BASEURL=
 | [X] Repo details page 
 | [X] Codegen for Graphql (in progress) 
 | [X] Auth feature
+| [X] Infinite Pagination 
 | [ ] Complete test coverage (in progress)
 | [ ] Code docs with JSDocs 
 | [ ] Document Components with story book
