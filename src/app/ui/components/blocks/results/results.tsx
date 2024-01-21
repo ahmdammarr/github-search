@@ -1,34 +1,13 @@
 import { getQuery } from "@app/utils/api-config/get-query";
 import React from "react";
 import ResultTable, { RESULT_TABLE_PARAMS } from "./result-table";
+import { searchRepos } from "./queries/searchRepos";
+import { Query } from "@app/graphql/types/graphql";
 
 const getData = async (query: string, cursor?: string) => {
-  const queryData = await getQuery({
+  const queryData: { data: Query } = await getQuery({
     url: process.env.graphql_base_url || "",
-    query: `
-        query SearchQuery($search: String!, $after: String){
-            search(query:$search, type: REPOSITORY, first: 100, after: $after) {
-              pageInfo {
-                endCursor
-                hasNextPage
-              }
-              edges {
-                node {
-                  ... on Repository {
-                    id
-                    name
-                    stargazers {
-                      totalCount
-                    }
-                    owner {
-                      login
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `,
+    query: `${searchRepos}`,
     variables: { search: query, after: cursor },
   });
 
@@ -44,19 +23,16 @@ export default async function Results({
 }) {
   const result = (await getData(query, cursor)).data;
   const edges = result?.data?.search?.edges;
-  const newCursor = result?.data?.search?.pageInfo?.endCursor;
-  const rows = edges?.map((node: typeof edges.node) => {
+  const endCursor = result?.data?.search?.pageInfo?.endCursor;
+  const rows = edges?.map(({ node }) => {
     return {
-      id: node?.node?.id || "",
-      repo: node?.node?.name || "",
-      stars: node?.node?.stargazers?.totalCount || "",
-      owner: node?.node?.owner?.login || "",
+      id: node?.id || "",
+      repo: node?.name || "",
+      stars: node?.stargazers?.totalCount || "",
+      owner: node?.owner?.login || "",
     };
   });
   return (
-    <ResultTable
-      repos={rows as RESULT_TABLE_PARAMS[]}
-      cursor={newCursor}
-    />
+    <ResultTable repos={rows as RESULT_TABLE_PARAMS[]} cursor={endCursor} />
   );
 }
