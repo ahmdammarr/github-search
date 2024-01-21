@@ -1,9 +1,11 @@
 # GH-Search
+[Live demo](https://github-search-two-ivory.vercel.app/)
 
 ## Tech
 
 - Next App router
--  React
+- React
+- Graphql
 - Github Actions
 - Storybook
 - Jest
@@ -15,9 +17,13 @@
 - Add the following variables to the `.env` file // To be updated after auth feature
 
 ```sh
-graphql_base_url=
-access_token= (To be removed after auth feature)
+CLIENT_ID=
+CLIENT_SECRET=
+AUTH_SECRET=
+GRAPHQL_BASEURL=
 ```
+- Run ```yarn dev```
+
 
 ## Manual deploy
 
@@ -31,9 +37,9 @@ access_token= (To be removed after auth feature)
 | Todo by 21st of Jan
 | ------
 | [X] Repo details page 
-| [ ] Codegen for Graphql (in progress) 
-| [ ] Auth feature
-| [ ] Complete test coverage
+| [X] Codegen for Graphql (in progress) 
+| [X] Auth feature
+| [ ] Complete test coverage (in progress)
 | [ ] Code docs with JSDocs 
 | [ ] Document Components with story book
 
