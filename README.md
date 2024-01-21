@@ -14,13 +14,14 @@
 ## Setup
 
 - Create [Github Auth App](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
+- generate next_secret - run ```openssl rand -base64 32``` and copy the token to the .env file
 - Add the following variables to the `.env` file 
 
 ```sh
-CLIENT_ID=
-CLIENT_SECRET=
-AUTH_SECRET=
-GRAPHQL_BASEURL=
+CLIENT_ID=github app client Id 
+CLIENT_SECRET=github app client secret
+AUTH_SECRET=next_secret
+GRAPHQL_BASEURL=https://api.github.com/graphql
 ```
 - Run ```yarn dev```
 
