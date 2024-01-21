@@ -6,7 +6,6 @@ import { Query } from "@app/graphql/types/graphql";
 
 const getData = async (query: string, cursor?: string) => {
   const queryData: { data: Query } = await getQuery({
-    url: process.env.graphql_base_url || "",
     query: `${searchRepos}`,
     variables: { search: query, after: cursor },
   });
