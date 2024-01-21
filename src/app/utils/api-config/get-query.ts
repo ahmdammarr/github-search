@@ -1,3 +1,6 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "@app/providers/auth-provider";
+
 type GET_QUERY_PARAMS = {
   url: string;
   query: string;
@@ -13,9 +16,11 @@ export async function getQuery({
     query: `${query}`,
     variables,
   };
+  const session = await getServerSession(authOptions);
+  const token = session?.access_token;
   const headers = {
     "content-type": "application/json",
-    Authorization: `Bearer ${process.env.access_token}`,
+    Authorization: `Bearer ${token}`,
   };
   try {
     const res = await fetch(url, {
