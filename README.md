@@ -36,7 +36,7 @@ GRAPHQL_BASEURL=
 
 ## Todo
 
-| Todo by 21st of Jan
+| Todo List
 | ------
 | [X] Repo details page 
 | [X] Codegen for Graphql (in progress) 
