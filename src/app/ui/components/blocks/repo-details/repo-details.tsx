@@ -15,7 +15,6 @@ export default async function RepoDetails({
   name?: string;
 }) {
   const result: { data: Query } = await getQuery({
-    url: process.env.graphql_base_url || "",
     query: `${getRepo}`,
     variables: { owner, name },
   });
