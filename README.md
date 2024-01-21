@@ -36,10 +36,9 @@ GRAPHQL_BASEURL=
 
 ## Todo
 
-| Todo by 21st of Jan
 | ------
 | [X] Repo details page 
-| [X] Codegen for Graphql (in progress) 
+| [X] Codegen for Graphql 
 | [X] Auth feature
 | [ ] Complete test coverage (in progress)
 | [ ] Code docs with JSDocs 
