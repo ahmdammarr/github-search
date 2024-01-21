@@ -14,7 +14,7 @@
 ## Setup
 
 - Create [Github Auth App](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/creating-an-oauth-app)
-- Add the following variables to the `.env` file // To be updated after auth feature
+- Add the following variables to the `.env` file 
 
 ```sh
 CLIENT_ID=
